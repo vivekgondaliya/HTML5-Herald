@@ -133,7 +133,15 @@
       this.classList.toggle('open');
     }
 
+    function toggleActive(e){
+      //two properties are transitionend font-size and flex also, Safari uses flex-grow
+      if(e.propertyName.includes('flex')){
+        this.classList.toggle('open-active');
+      }
+    }
+
     panels.forEach(panel => panel.addEventListener('click',toggleOpen));
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
   </script>
 
 
